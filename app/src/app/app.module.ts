@@ -10,12 +10,17 @@ import { CoreModule } from './core/core.module';
 import { UserModule } from './user/user.module';
 import { PaintingModule } from './painting/painting.module';
 import { PaymentModule } from './payment/payment.module';
+import { HeaderComponent } from './core/header/header.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { AdminModule } from './admin/admin.module';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -23,9 +28,11 @@ import { PaymentModule } from './payment/payment.module';
     CoreModule,
     UserModule,
     PaintingModule,
-    PaymentModule
+    PaymentModule,
+    AdminModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,
+    HeaderComponent, FooterComponent]
 })
 export class AppModule { }

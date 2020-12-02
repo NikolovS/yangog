@@ -1,1 +1,43 @@
-<p>login works!</p>
+<form class="login">
+
+    <fieldset>
+        <h2>Login </h2>
+
+        <p class="field field-icon">
+            <label for="email"> </label>
+            <!-- <input #userEmail="ngModel" [class.input-error]="userEmail.touched && !!userEmail.errors" type="text"
+                name="email" id="email" placeholder="john.doe@gmail.com" ngModel required
+                pattern="^[a-zA-Z0-9\.-]{6,}@\w+\.(com|bg)$"> -->
+            <input type="text" name="email" id="email" placeholder="john.doe@gmail.com">
+
+            <!-- Validations -->
+            <!-- </p>
+        <p  class="error">
+            Email is required!
+        </p>
+        <p   class="error">
+            Email is not valid!
+        </p> -->
+
+        <p class="field field-icon">
+            <label for="password"> </label>
+            <input type="password" name="password" id="password" placeholder="******">
+
+
+        </p>
+        <!-- Validations -->
+        <!-- <p class="error">
+            Password is required!
+        </p>
+        <p class="error">
+            Password must be at least 4 characters!
+        </p> -->
+
+        <button type="button">Login</button>
+        <p class="text-center">
+            Have an account?
+            <a routerLink="/user/register">Sign Up</a>
+        </p>
+
+    </fieldset>
+</form>

@@ -11,7 +11,7 @@ const routes: Routes = [
     {
         path: 'payment',
         pathMatch: 'full',
-        component: PaymentComponent,
+        redirectTo: '/payment/list',
         data: {
             title: 'PAYMENT'
         }

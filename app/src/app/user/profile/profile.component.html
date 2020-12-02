@@ -1,1 +1,44 @@
-<p>profile works!</p>
+<div class="profile">
+    <h3>User Info:</h3>
+    <div class="flex">
+        <p>Username: </p>
+        <p>Stefan</p>
+    </div>
+    <div class="flex">
+        <p>Email: </p>
+        <p>email</p>
+    </div>
+    <div class="flex">
+        <p>Phone: </p>
+        <p>+359 898743097</p>
+    </div>
+    <button class="edit-button" type="button">Edit</button>
+</div>
+
+
+<div class="profile">
+    <h3>User Info:</h3>
+
+    <form>
+        <div class="flex">
+            <p>Username: </p>
+            <input type="text" name="username" id="username">
+        </div>
+        <div class="flex">
+            <p>Email: </p>
+            <input type="email" name="email" id="email">
+        </div>
+        <div class="flex">
+            <p>Phone: </p>
+            <div>
+                <select name="select-phone" id="select-phone" class="Phone">
+                    <option value="00359">+359</option>
+                </select>
+                <input type="text" name="phone" id="phone">
+            </div>
+        </div>
+        <button type="button" class="red-button">Cancel</button>
+        <button class="green-button">Save</button>
+    </form>
+
+</div>

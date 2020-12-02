@@ -1,1 +1,52 @@
-<p>new works!</p>
+<div class="new-painting-border">
+    <div class="header-background">
+        <span>New Painting</span>
+    </div>
+    <form>
+        <div class="new-painting-title">
+            <label for="paintingName">Name <span class="red">*</span></label>
+            <input type="text" name="paintingName" id="paintingName">
+            <!-- For Validations -->
+            <!-- <p class="error"  >
+                Painting name is required.
+            </p>
+            <p class="error"  >
+                Painting name must be at least 5 characters long.
+            </p> -->
+        </div>
+        <div class="new-painting-content">
+            <label for="description"> Description <span class="red">*</span></label>
+            <textarea type="text" name="description" id="description" rows="8" class="height"></textarea>
+
+            <!-- For Validations -->
+            <!--   <p class="error" >
+                The field with your post is required.
+            </p>
+            <p class="error">
+                Post must be at least 10 characters long.
+            </p> -->
+            <label for="price">Price <span class="red">*</span></label>
+            <input type="number" name="price" id="price">
+
+            <!-- For Validations -->
+            <!--   <p class="error" >
+                The field with your Price is required.
+            </p>
+              -->
+            <label for="image">Image <span class="red">*</span></label>
+            <input type="text" name="image" id="image">
+
+            <!-- For Validations -->
+            <!--   <p class="error" >
+                The field with your Price is required.
+            </p>
+              -->
+        </div>
+
+        <div class="new-painting-buttons">
+            <button type="button" class="cancel" routerLink="/">Cancel</button>
+            <button type="button" class="public" routerLink="/painting/list">Create</button>
+        </div>
+
+    </form>
+</div>
