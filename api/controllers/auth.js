@@ -41,9 +41,9 @@ function register(req, res, next) {
 }
 
 function login(req, res, next) {
-    const { username, password } = req.body;
-
-    userModel.findOne({ username })
+    const { email, password } = req.body;
+    // console.log(email, password);
+    userModel.findOne({ email })
         .then(user => {
             return Promise.all([user, user ? user.matchPassword(password) : false]);
         })
@@ -75,10 +75,13 @@ function logout(req, res) {
     tokenBlacklistModel.create({ token })
         .then(() => {
             res.clearCookie(authCookieName)
-                .status(401)
                 .send({ message: 'Logged out!' });
         })
         .catch(err => res.send(err));
+}
+
+function getMe(req, res, next) {
+    res.json(req.user)
 }
 
 
@@ -86,5 +89,6 @@ module.exports = {
     login,
     register,
     logout,
+    getMe
 
 }

@@ -1,4 +1,4 @@
-<form class="register">
+<form class="register" #f="ngForm" (ngSubmit)="submitFormHandler(f.value)">
 
     <fieldset>
         <h2>Sign Up</h2>
@@ -6,29 +6,34 @@
         <!-- username -->
         <p class="field field-icon">
             <label for="username"></label>
-            <input type="text" name="username" id="username" placeholder="Stefan">
+            <input #userName="ngModel" [class.input-error]="userName.touched && !!userName.errors" type="text"
+                name="username" id="username" placeholder="Stefan" ngModel required minlength="5" appUsernameValidator>
         </p>
         <!-- For Validation -->
-        <!-- <p class="error">
+        <p class="error" *ngIf="userName.touched && userName.errors?.required">
             Username is required!
         </p>
-        <p class="error">
+        <p class="error" *ngIf="userName.touched && userName.errors?.minlength">
             Username must be at least 5 characters!
-        </p> -->
+        </p>
+        <p class="error" *ngIf="userName.touched && userName.errors?.usernameValidator">
+            Username must must contains only latin letters and digits!`
+        </p>
 
 
         <!-- email -->
         <p class="field field-icon">
             <label for="email"></label>
-            <input type="email" name="email" id="email" placeholder="stefan.nikolov@gmail.com">
+            <input #userEmail="ngModel" type="email" name="email" id="email" placeholder="stefan.nikolov@gmail.com"
+                ngModel required appEmailValidator>
         </p>
         <!-- For Validation -->
-        <!-- <p class="error">
+        <p class="error" *ngIf="userEmail.touched && userEmail.errors?.required">
             Email is required!
         </p>
-        <p  class="error">
+        <p class="error" *ngIf="userEmail.touched && userEmail.errors?.emailValidator">
             Email is not valid!
-        </p> -->
+        </p>
 
         <!-- phone -->
         <p class="field field-icon">
@@ -36,35 +41,37 @@
             <select name="select-phone" id="select-phone" class="phone">
                 <option value="00359">+359</option>
             </select>
-            <input type="text" name="phone" id="phone" placeholder="885 888 888">
+            <input #userPhone="ngModel" type="text" name="phone" id="phone" placeholder="885 888 888" ngModel required>
         </p>
 
         <!-- password -->
         <p class="field field-icon">
             <label for="password"></label>
-            <input type="password" name="password" id="password" placeholder="******">
+            <input #userPassword="ngModel" type="password" name="password" id="password" placeholder="******" ngModel
+                required minlength="5">
         </p>
         <!-- For Validation -->
 
-        <!-- <p class="error">
+        <p class="error" *ngIf="userPassword.touched && userPassword.errors?.required">
             Password is required!
         </p>
-        <p class="error">
+        <p class="error" *ngIf="userPassword.touched && userPassword.errors?.minlength">
             Password must be at least 5 characters!
-        </p> -->
+        </p>
 
         <!-- rePassword -->
         <p class="field field-icon">
             <label for="rePassword"> </label>
-            <input type="password" name="rePassword" id="rePassword" placeholder="******">
+            <input #userRePassword="ngModel" type="password" name="rePassword" id="rePassword" placeholder="******"
+                ngModel required>
         </p>
         <!-- For Validation -->
-        <!-- <p class="error">
+        <p class="error" *ngIf="userRePassword.touched && userRePassword.errors?.required">
             Repeat Password is required!</p>
-        <p class="error">
-            Repeat Password does not match password!</p> -->
+        <p class="error" *ngIf="userRePassword.touched && userPassword.value!== userRePassword.value">
+            Repeat Password does not match password!</p>
 
-        <button type="button">Create Account</button>
+        <button type="submit" [disabled]="f.invalid">Create Account</button>
 
         <p class="text-center">
             Have an account?

@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -10,10 +13,12 @@ import { RouterModule } from '@angular/router';
   declarations: [HeaderComponent, FooterComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   exports: [
     HeaderComponent, FooterComponent
-  ]
+  ],
+  providers: [AuthGuard]
 })
 export class CoreModule { }

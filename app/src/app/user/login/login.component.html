@@ -1,4 +1,4 @@
-<form class="login">
+<form class="login" #f="ngForm" (ngSubmit)="submitFormHandler(f.value)">
 
     <fieldset>
         <h2>Login </h2>
@@ -8,32 +8,39 @@
             <!-- <input #userEmail="ngModel" [class.input-error]="userEmail.touched && !!userEmail.errors" type="text"
                 name="email" id="email" placeholder="john.doe@gmail.com" ngModel required
                 pattern="^[a-zA-Z0-9\.-]{6,}@\w+\.(com|bg)$"> -->
-            <input type="text" name="email" id="email" placeholder="john.doe@gmail.com">
+            <input #userEmail="ngModel" (ngModelChange)="errorMessage=null"
+                [class.input-error]="userEmail.touched && !!userEmail.errors" type="text" name="email" id="email"
+                placeholder="john.doe@gmail.com" ngModel required appEmailValidator>
 
             <!-- Validations -->
-            <!-- </p>
-        <p  class="error">
+        </p>
+        <p class="error" *ngIf='userEmail.touched && userEmail.errors?.required'>
             Email is required!
         </p>
-        <p   class="error">
+        <p class="error" *ngIf='userEmail.touched && userEmail.errors && userEmail.value != "" '>
             Email is not valid!
-        </p> -->
+        </p>
 
         <p class="field field-icon">
             <label for="password"> </label>
-            <input type="password" name="password" id="password" placeholder="******">
+            <input #userPassword="ngModel" (ngModelChange)="errorMessage=null"
+                [class.input-error]="userPassword.touched && !!userPassword.errors" type="password" name="password"
+                id="password" placeholder="******" ngModel required minlength="5" />
 
 
         </p>
         <!-- Validations -->
-        <!-- <p class="error">
+        <p class="error" *ngIf='userPassword.touched && userPassword.errors?.required'>
             Password is required!
         </p>
-        <p class="error">
-            Password must be at least 4 characters!
-        </p> -->
+        <p class="error" *ngIf='userPassword.touched && userPassword.errors?.minlength'>
+            Password must be at least 5 characters!
+        </p>
+        <p class="error" *ngIf=' errorMessage'>
+            {{errorMessage}}
+        </p>
 
-        <button type="button">Login</button>
+        <button type="submit" [disabled]="f.invalid">Login</button>
         <p class="text-center">
             Have an account?
             <a routerLink="/user/register">Sign Up</a>

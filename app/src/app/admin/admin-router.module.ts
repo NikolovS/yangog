@@ -1,4 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
+
+import { AuthGuard } from '../core/guards/auth.guard';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PaintinglistComponent } from './paintinglist/paintinglist.component';
 import { PaymentlistComponent } from './paymentlist/paymentlist.component';
@@ -7,30 +10,44 @@ import { UserlistComponent } from './userlist/userlist.component';
 const routes: Routes = [
     {
         path: 'admin',
+        canActivateChild: [AuthGuard],
         children: [
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: '/dashboard',
+                redirectTo: '/dashboard'
+            },
+            {
+                path: 'dashboard',
+                component: DashboardComponent,
                 data: {
+                    isAdmin: true,
                     title: 'Admin'
                 }
             },
             {
-                path: 'dashboard',
-                component: DashboardComponent
-            },
-            {
                 path: 'userlist',
-                component: UserlistComponent
+                component: UserlistComponent,
+                data: {
+                    isAdmin: true,
+                    title: 'Admin'
+                }
             },
             {
                 path: 'paintinglist',
-                component: PaintinglistComponent
+                component: PaintinglistComponent,
+                data: {
+                    isAdmin: true,
+                    title: 'Admin'
+                }
             },
             {
                 path: 'paymentlist',
-                component: PaymentlistComponent
+                component: PaymentlistComponent,
+                data: {
+                    isAdmin: true,
+                    title: 'Admin'
+                }
             }
 
 

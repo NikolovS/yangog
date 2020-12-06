@@ -1,50 +1,60 @@
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../core/guards/auth.guard';
 import { DetailComponent } from './detail/detail.component';
 import { ListComponent } from './list/list.component';
 import { NewComponent } from './new/new.component';
 
 import { PaymentListItemComponent } from './payment-list-item/payment-list-item.component';
 
-import { PaymentComponent } from './payment/payment.component';
+
 
 const routes: Routes = [
     {
         path: 'payment',
-        pathMatch: 'full',
-        redirectTo: '/payment/list',
-        data: {
-            title: 'PAYMENT'
-        }
+        canActivateChild: [AuthGuard],
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: '/payment/list',
+                data: {
+                    title: 'PAYMENT'
+                }
+            },
+            {
+                path: 'detail/:id',
+                component: DetailComponent,
+                data: {
+                    isLogged: true,
+                    title: 'PAYMENT DETAIL'
+                }
+            },
+            {
+                path: 'new',
+                component: NewComponent,
+                data: {
+                    isLogged: true,
+                    title: 'NEW PAYMENT'
+                }
+            },
+            {
+                path: 'list',
+                component: ListComponent,
+                data: {
+                    isLogged: true,
+                    title: 'ALL PAYMENTS'
+                }
+            },
+            {
+                path: 'list/:id',
+                component: PaymentListItemComponent,
+                data: {
+                    isAdmin: true,
+                    title: 'CURRENT PAYMENT'
+                }
+            }
+        ]
     },
-
-    {
-        path: 'payment/detail/:id',
-        component: DetailComponent,
-        data: {
-            title: 'PAYMENT DETAIL'
-        }
-    },
-    {
-        path: 'payment/new',
-        component: NewComponent,
-        data: {
-            title: 'NEW PAYMENT'
-        }
-    },
-    {
-        path: 'payment/list',
-        component: ListComponent,
-        data: {
-            title: 'ALL PAYMENTS'
-        }
-    },
-    {
-        path: 'payment/list/:id',
-        component: PaymentListItemComponent,
-        data: {
-            title: 'CURRENT PAYMENT'
-        }
-    }
 ];
 
 

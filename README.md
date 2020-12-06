@@ -8,7 +8,12 @@ This is my course work, which includes MongoDB Express.js API as Backend and Ang
   - [x] frontend angular routing
   - [x] angular components' html
   - [x] angular components' css (bootstrap 5)
+  - [X] list all users
+  - [X] list all paintings
+  - [X] api auth/me endpoint added
+  - [X] added admin module
+  - [X] angular authGuard implementet for logdenIn and Admin users
 
 # todo
-  - [ ] list all users
-  - [ ] list all paintings
+  - add angular painting service
+  - add angular payment service

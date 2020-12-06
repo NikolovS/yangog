@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../core/guards/auth.guard';
 import { DetailComponent } from './detail/detail.component';
 import { ListComponent } from './list/list.component';
 import { NewComponent } from './new/new.component';
@@ -8,6 +9,7 @@ import { PaintingListItemComponent } from './painting-list-item/painting-list-it
 const routes: Routes = [
     {
         path: 'painting',
+        canActivateChild: [AuthGuard],
         children: [
             {
                 path: '',
@@ -20,6 +22,7 @@ const routes: Routes = [
                 path: 'detail/:id',
                 component: DetailComponent,
                 data: {
+                    isLogged: false,
                     title: 'PAINTING DETAIL'
                 }
             },
@@ -27,6 +30,7 @@ const routes: Routes = [
                 path: 'new',
                 component: NewComponent,
                 data: {
+                    isAdmin: true,
                     title: 'NEW PAINTING'
                 }
             },
@@ -34,6 +38,7 @@ const routes: Routes = [
                 path: 'list',
                 component: ListComponent,
                 data: {
+                    isLogged: false,
                     title: 'ALL PAINTINGS'
                 }
             },
@@ -41,6 +46,7 @@ const routes: Routes = [
                 path: 'list/:id',
                 component: PaintingListItemComponent,
                 data: {
+                    isAdmin: true,
                     title: 'CURRENT PAINTING'
                 }
             }
