@@ -1,4 +1,5 @@
 const { paymentModel } = require('../models');
+const paintingModel = require('../models/paintingModel');
 
 function getPayment(req, res, next) {
     const { id } = req.params;
@@ -9,6 +10,8 @@ function getPayment(req, res, next) {
 
 function listPayments(req, res, next) {
     paymentModel.find()
+        .populate('paintings')
+        .populate('userId')
         .then(payments => res.json(payments))
         .catch(next);
 }

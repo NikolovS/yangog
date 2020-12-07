@@ -9,6 +9,8 @@ function getUser(req, res, next) {
 
 function listUsers(req, res, next) {
     userModel.find()
+        .populate('paintings')
+        .populate('payments')
         .then(users => res.json(users))
         .catch(next);
 }
@@ -44,10 +46,34 @@ function deleteUser(req, res, next) {
         .catch(next);
 }
 
+async function changePassword(req, res, next) {
+    const { new_password } = req.body;
+    const { id } = req.params;
+    const { _id: userId } = req.user;
+
+    let loggedInUser = await userModel.findById(userId)
+    let user = await userModel.findOne({ _id: id })
+
+    if (
+        (loggedInUser && loggedInUser.isAdmin)
+        || (loggedInUser._id.equals(user._id))
+    ) {
+        user.password = new_password;
+        user.save().then((user) => {
+            res.json(user);
+        }).catch((err) => {
+            next(err)
+        });
+    } else {
+        res.status(401).json({ status: 'Unauthorized' });
+    }
+}
+
 module.exports = {
     getUser,
     listUsers,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    changePassword
 }

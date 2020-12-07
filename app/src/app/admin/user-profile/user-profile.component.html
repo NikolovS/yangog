@@ -2,18 +2,18 @@
 
     <div class="flex">
         <p>Username: </p>
-        <p>{{currentUser?.username}}</p>
+        <p>{{user?.username}}</p>
     </div>
     <div class="flex">
         <p>Email: </p>
-        <p>{{currentUser?.email}}</p>
+        <p>{{user?.email}}</p>
     </div>
     <div class="flex">
         <p>Phone: </p>
-        <p>+359 {{currentUser?.phone}}</p>
+        <p>+359 {{user?.phone}}</p>
     </div>
     <button class="edit-button" (click)="toggleEdintMode()">Edit</button>
-    <button class="btn btn-primary" routerLink="/user/change-password">Change Password</button>
+    <a routerLink="/admin/user/change-password/{{user?._id}}">Change Password</a>
 
 </ng-template>
 
@@ -23,8 +23,8 @@
     <form #f="ngForm" (ngSubmit)="submitHandler()">
         <div class="flex">
             <p>Username: </p>
-            <input #username="ngModel" type="text" name="username" id="username" [ngModel]="currentUser?.username"
-                required minlength="5">
+            <input #username="ngModel" type="text" name="username" id="username" [ngModel]="user?.username" required
+                minlength="5">
 
         </div>
         <p class="error" *ngIf="username.touched && username.errors?.required">
@@ -35,13 +35,13 @@
         </p>
         <div class="flex">
             <p>Email: </p>
-            <input #email="ngModel" type="email" name="email" id="email" [ngModel]="currentUser?.email" required
+            <input #email="ngModel" type="email" name="email" id="email" [ngModel]="user?.email" required
                 appEmailValidator>
         </div>
         <p class="error" *ngIf="email.touched && email.errors?.required">
             Email is required!
         </p>
-        <p class="error" *ngIf='email.touched && email.errors?.emailValidator'>
+        <p class="error" *ngIf="email.touched && email.errors?.emailValidator">
             Email is not valid!
         </p>
         <div class="flex">
@@ -50,7 +50,7 @@
                 <select name="select-phone" id="select-phone" class="Phone">
                     <option value="00359">+359</option>
                 </select>
-                <input type="text" name="phone" id="phone" [ngModel]="currentUser?.phone">
+                <input type="text" name="phone" id="phone" [ngModel]="user?.phone">
             </div>
         </div>
 
@@ -63,6 +63,5 @@
 
 <div class="profile">
     <h3>User Info:</h3>
-
     <ng-container *ngTemplateOutlet="inEditMode ? editMode : defaultMode"></ng-container>
 </div>

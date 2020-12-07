@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IPayment } from 'src/app/shared/interfaces';
+import { PaymentService } from '../payment.service';
+
 
 @Component({
   selector: 'app-list',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+
+  paymentList: IPayment[] = [];
+  constructor(private paymentService: PaymentService) { }
 
   ngOnInit(): void {
+    this.paymentService.listPayments().subscribe(paymentList => {
+      this.paymentList = paymentList;
+    });
   }
 
 }

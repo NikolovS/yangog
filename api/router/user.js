@@ -5,6 +5,7 @@ const { auth } = require('../utils');
 
 // TO DO:
 router.get('/', auth(), userController.listUsers);
+router.post('/change-password/:id', auth(), userController.changePassword);
 router.get('/:id', auth(), userController.getUser);
 router.put('/:id', auth(), userController.updateUser);
 router.delete('/:id', auth(), userController.deleteUser);

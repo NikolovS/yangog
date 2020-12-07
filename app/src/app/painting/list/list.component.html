@@ -13,23 +13,24 @@
     <div class="row ">
 
         <div class="card-deck d-flex justify-content-center" style="margin: 0">
-            <div class="card mb-4">
-                <img class="card-img-top" src="../../assets/joda.JPG" alt="Card image cap" width="400">
+            <div class="card mb-4" *ngFor="let painting of paintingList">
+                <img class="card-img-top" src="{{environment.assetsUrl}}/{{painting.image}}" alt="Card image cap"
+                    width="400">
                 <div class="card-body">
                     <h4 class="card-title">
-                        JODAA
+                        {{painting.name}}
                     </h4>
                 </div>
                 <div class="card-footer">
-                    <a routerLink="/painting/detail/1"><button type="button"
+                    <a routerLink="/painting/detail/{{painting._id}}"><button type="button"
                             class="btn btn-primary">Details</button></a>
-                    <small class="float-right"> 2020</small>
+                    <small class="float-right"> {{painting.created_at}}</small>
                 </div>
             </div>
         </div>
 
     </div>
-    <div class="row ">
+    <!-- <div class="row ">
 
         <div class="card-deck d-flex justify-content-center" style="margin: 0">
             <div class="card mb-4">
@@ -305,6 +306,6 @@
             </div>
         </div>
 
-    </div>
+    </div> -->
 
 </div>

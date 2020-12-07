@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PaintingService } from 'src/app/painting/painting.service';
+import { IPainting } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-paintinglist',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaintinglistComponent implements OnInit {
 
-  constructor() { }
+  paintingList: IPainting[] = [];
+  constructor(private paintingService: PaintingService) { }
 
   ngOnInit(): void {
+    this.paintingService.listPaintings().subscribe((paintingList) => {
+      this.paintingList = paintingList;
+    });
   }
 
 }

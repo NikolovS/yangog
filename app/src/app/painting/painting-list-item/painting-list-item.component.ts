@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IPainting } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-painting-list-item',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaintingListItemComponent implements OnInit {
 
+  @Input() painting: IPainting | undefined;
   constructor() { }
 
   ngOnInit(): void {

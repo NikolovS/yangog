@@ -72,6 +72,9 @@
 .edit-button {
     background-color: green;
 }
-.error{
-    color: red
+.error {
+    color: red;
+}
+input{
+    display: block;
 }

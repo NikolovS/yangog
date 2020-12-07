@@ -9,39 +9,24 @@
                 <th scope="col">Date</th>
                 <th scope="col">Status</th>
                 <th scope="col">Total</th>
-                <th scope="col">Description</th>
+                <th scope="col">Paintings</th>
                 <th scope="col">Actions</th>
 
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let payment of paymentList">
             <tr>
-                <th scope="row">1</th>
-                <td>Stefan</td>
-                <td>22.11.2020</td>
-                <td>Success</td>
-                <td>100.99</td>
-                <td>This is JODA PAINTING</td>
+                <th scope="row">{{payment._id}}</th>
+                <td>{{payment.userId?.username}}</td>
+                <td>{{payment.created_at}}</td>
+                <td>{{payment.status}}</td>
+                <td>{{payment.total}}</td>
+                <td>
+                    <p *ngFor="let painting of payment.paintings">{{painting.name}},</p>
+                </td>
                 <td><a class="btn-sm btn-success">Edit</a><a class="btn-sm btn-warning">Delete</a></td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Yani</td>
-                <td>22.11.2020</td>
-                <td>Success</td>
-                <td>100.99</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut felis odio, vestibulum quis ullamcorper
-                    sed,
-                    maximus molestie magna. Sed laoreet ornare ligula at sagittis. In facilisis orci at odio posuere
-                    auctor.
-                    Maecenas ut mollis urna. Sed varius feugiat justo, at pretium odio tincidunt ac. Aliquam malesuada
-                    consequat pharetra. In id purus scelerisque, pellentesque massa nec, pellentesque eros. Aliquam
-                    accumsan, ex non molestie fermentum, massa leo interdum velit, ut sollicitudin nulla dolor in ex.
-                    Vestibulum tempus porta dolor id hendrerit. Vestibulum ullamcorper quis leo ut egestas. Maecenas
-                    laoreet
-                    mauris ipsum, et consequat sapien gravida sit amet. Proin eu erat neque. Nunc.</td>
-                <td><a class="btn-sm btn-success">Edit</a><a class="btn-sm btn-warning">Delete</a></td>
-            </tr>
+
 
         </tbody>
     </table>

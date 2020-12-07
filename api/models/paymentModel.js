@@ -14,6 +14,11 @@ const paymentSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "User"
     },
+    status: {
+        type: String,
+        default: 'Success'
+    },
+
 
 }, { timestamps: { createdAt: 'created_at' } });
 

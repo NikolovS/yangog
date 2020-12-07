@@ -1,18 +1,18 @@
 <div class="container">
-    <h1 class="my-4">JODA
+    <h1 class="my-4">{{painting?.name}}
     </h1>
 
     <div class="row">
 
         <div class="col-md-5">
-            <img class="img-fluid" src="../../assets/joda.JPG" alt="Card painting" />
+            <img class="img-fluid" src="{{environment.assetsUrl}}/{{painting?.image}}" alt="Card painting" />
         </div>
 
         <div class="col-md-7 text-center">
             <h4 class="my-3">Description</h4>
-            <p>Place some description about the painting here!</p>
+            <p>{{painting?.description}}</p>
             <h3 class="my-3">Price:</h3>
-            <p>200 лв.</p>
+            <p>{{painting?.price}}лв.</p>
 
             <a class="btn btn-primary">Add to Cart</a>
 

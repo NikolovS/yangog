@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/guards/auth.guard';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
@@ -32,6 +33,15 @@ const routes: Routes = [
                 data: {
                     isLogged: true,
                     title: 'USER PROFILE'
+                }
+            },
+            {
+                path: 'change-password',
+
+                component: ChangePasswordComponent,
+                data: {
+                    isLogged: true,
+                    title: 'USER CHANGE PASSWORD'
                 }
             }
         ]

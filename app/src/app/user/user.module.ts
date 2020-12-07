@@ -7,6 +7,8 @@ import { UserRoutingModule } from './user-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user.service';
 import { SharedModule } from '../shared/shared.module';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+
 
 
 
@@ -14,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ProfileComponent],
+    ProfileComponent,
+    ChangePasswordComponent],
 
   imports: [
     CommonModule,

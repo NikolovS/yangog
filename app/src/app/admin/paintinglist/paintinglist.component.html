@@ -15,41 +15,22 @@
 
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let painting of paintingList">
             <tr>
                 <th scope="row">1</th>
-                <td>IRON MAN</td>
-                <td>22.11.2020</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut felis odio, vestibulum quis ullamcorper
-                    sed,
-                    maximus molestie magna. Sed laoreet ornare ligula at sagittis. In facilisis orci at odio posuere
-                    auctor.
-                    Maecenas ut mollis urna. Sed varius feugiat justo, at pretium odio tincidunt ac. Aliquam malesuada
-                    consequat pharetra. In id purus scelerisque, pellentesque massa nec, pellentesque eros. Aliquam
-                    accumsan, ex non molestie fermentum, massa leo interdum velit, ut sollicitudin nulla dolor in ex.
-                    Vestibulum tempus porta dolor id hendrerit. Vestibulum ullamcorper quis leo ut egestas. Maecenas
-                    laoreet
-                    mauris ipsum, et consequat sapien gravida sit amet. Proin eu erat neque. Nunc.</td>
+                <td>{{painting.name}}</td>
+                <td>{{painting.created_at}}</td>
+                <td>{{painting.description}}</td>
 
-                <td>99.99</td>
-                <td>YES</td>
-                <td>Stefan</td>
-                <td><a class="btn-sm btn-success" routerLink="/painting/list/1">Edit</a><a
+                <td>{{painting.price}}</td>
+                <td>{{painting.isSold ? 'Yes' : 'No' }}</td>
+                <td>
+                    {{painting.buyer?.username}}
+                </td>
+                <td><a class="btn-sm btn-success" routerLink="/painting/list/{{painting._id}}">Edit</a><a
                         class="btn-sm btn-warning">Delete</a></td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>JODA</td>
-                <td>13.11.2020</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
 
-                <td>100.99</td>
-                <td>No</td>
-                <td></td>
-
-                <td><a class="btn-sm btn-success" routerLink="/painting/list/1">Edit</a><a
-                        class="btn-sm btn-warning">Delete</a></td>
-            </tr>
 
         </tbody>
     </table>

@@ -16,30 +16,24 @@
 
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let user of userList">
+
             <tr>
                 <th scope="row">1</th>
-                <td>Stefan</td>
-                <td>22.11.2020</td>
-                <td>stafan@abv.bg</td>
-                <td>0898743097</td>
-                <td>200.55</td>
-                <td>JODAA,IRON MAN</td>
-                <td>Success,Success</td>
-                <td><a class="btn-sm btn-success" routerLink="/user/profile">Edit</a><a
-                        class="btn-sm btn-warning">Delete</a></td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Yani</td>
-                <td>25.11.2020</td>
-                <td>yani@abv.bg</td>
-                <td>8888888888</td>
-                <td>100.99</td>
-                <td>JODAA</td>
-                <td>Success</td>
-
-                <td><a class="btn-sm btn-success" routerLink="/user/profile">Edit</a><a
+                <td>{{user.username}}</td>
+                <td>{{user.created_at}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phone}}</td>
+                <td>
+                    <p *ngFor="let payment of user.payments">{{payment.total}}</p>
+                </td>
+                <td>
+                    <p *ngFor="let painting of user.paintings">{{painting.name}}</p>
+                </td>
+                <td>
+                    <p *ngFor="let payment of user.payments">{{payment.status}}</p>
+                </td>
+                <td><a class="btn-sm btn-success" routerLink="/admin/user/profile/{{user._id}}">Edit</a><a
                         class="btn-sm btn-warning">Delete</a></td>
             </tr>
 

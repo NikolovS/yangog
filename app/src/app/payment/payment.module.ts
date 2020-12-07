@@ -6,6 +6,7 @@ import { ListComponent } from './list/list.component';
 import { PaymentComponent } from './payment/payment.component';
 import { PaymentListItemComponent } from './payment-list-item/payment-list-item.component';
 import { PaymentRouterModule } from './payment-router.module';
+import { PaymentService } from './payment.service';
 
 
 
@@ -14,6 +15,7 @@ import { PaymentRouterModule } from './payment-router.module';
   imports: [
     CommonModule,
     PaymentRouterModule
-  ]
+  ],
+  providers: [PaymentService]
 })
 export class PaymentModule { }

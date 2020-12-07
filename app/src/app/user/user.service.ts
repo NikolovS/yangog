@@ -12,6 +12,7 @@ export class UserService {
 
   currentUser: IUser | null | undefined;
 
+
   get isLogged(): boolean { return !!this.currentUser; }
   get isAdmin(): boolean {
     if (this.isLogged) {
@@ -24,10 +25,8 @@ export class UserService {
 
 
   getCurrentUserProfile(): Observable<any> {
-    const headers = new HttpHeaders()
-      .set('Cache-Control', 'no-cache')
-      .set('Pragma', 'no-cache');
-    return this.http.get<IUser>(`${apiUrl}/auth/me`, { withCredentials: true, headers }).pipe(
+
+    return this.http.get<IUser>(`${apiUrl}/auth/me`, { withCredentials: true }).pipe(
       tap((user: IUser) => this.currentUser = user),
       catchError(() => { this.currentUser = null; return of(null); }));
   }
@@ -51,10 +50,23 @@ export class UserService {
 
   }
 
-  updateProfile(data: any): Observable<IUser> {
-    return this.http.put<IUser>(`${apiUrl}/users`, data, { withCredentials: true }).pipe(
+  updateProfile(id: string, data: any): Observable<IUser> {
+    return this.http.put<IUser>(`${apiUrl}/user/${id}`, data, { withCredentials: true }).pipe(
       tap((user: IUser) => this.currentUser = user)
     );
   }
+  listUsers(): Observable<IUser[]> {
+    return this.http.get<IUser[]>(`${apiUrl}/user/`, { withCredentials: true });
+  }
+  getUser(id: string): Observable<IUser> {
+    return this.http.get<IUser>(`${apiUrl}/user/${id}`, { withCredentials: true });
+  }
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete<IUser>(`${apiUrl}/user/${id}`, { withCredentials: true });
 
+  }
+
+  changePassword(id: string, newPassword: string): Observable<any> {
+    return this.http.post<any>(`${apiUrl}/user/change-password/${id}`, { new_password: newPassword }, { withCredentials: true });
+  }
 }

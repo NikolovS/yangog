@@ -8,4 +8,9 @@ export interface IPainting {
     price: number;
     isSold: boolean;
     image: string;
+    _id: string;
+    created_at: string;
+    updatedAt: string;
+    __v: number;
+    buyer: IUser;
 }

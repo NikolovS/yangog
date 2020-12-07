@@ -5,6 +5,8 @@ import { DetailComponent } from './detail/detail.component';
 import { NewComponent } from './new/new.component';
 import { ListComponent } from './list/list.component';
 import { PaintingRouterModule } from './painting-router.module';
+import { FormsModule } from '@angular/forms';
+import { PaintingService } from './painting.service';
 
 
 
@@ -12,7 +14,9 @@ import { PaintingRouterModule } from './painting-router.module';
   declarations: [PaintingComponent, DetailComponent, NewComponent, ListComponent],
   imports: [
     CommonModule,
-    PaintingRouterModule
-  ]
+    PaintingRouterModule,
+    FormsModule
+  ],
+  providers: [PaintingService]
 })
 export class PaintingModule { }

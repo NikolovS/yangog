@@ -1,28 +1,25 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IUser } from 'src/app/shared/interfaces';
-import { UserService } from '../user.service';
+import { UserService } from '../../user/user.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
 
-  private id = '';
+  private id: string;
   public user: IUser | null;
   public environment: any;
   inEditMode = false;
-  get currentUser(): IUser | null | undefined {
-    return this.userService.currentUser;
-  }
 
-  constructor(private userService: UserService) {
-    if (this.userService.currentUser) {
-      this.id = this.userService.currentUser._id;
-    }
+
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
+    this.id = this.activatedRoute.snapshot.params.id;
     this.user = null;
     this.environment = environment;
   }
@@ -32,10 +29,10 @@ export class ProfileComponent implements OnInit {
       this.user = user;
     });
   }
-
   toggleEdintMode(): void {
     this.inEditMode = !this.inEditMode;
   }
+
 
   submitHandler(): void {
     console.log(this);
@@ -50,3 +47,9 @@ export class ProfileComponent implements OnInit {
     // });
   }
 }
+
+
+
+
+
+

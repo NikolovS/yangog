@@ -1,3 +1,5 @@
+import { IPainting } from './painting';
+import { IPayment } from './payment';
 
 
 export interface IUser {
@@ -5,8 +7,12 @@ export interface IUser {
     email: string;
     username: string;
     password: string;
-    paintings: string[];
-    payments: string[];
+    paintings: IPainting[];
+    payments: IPayment[];
     isAdmin: boolean;
+    _id: string;
+    created_at: string;
+    updatedAt: string;
+    __v: number;
 
 }

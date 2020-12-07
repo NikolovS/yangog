@@ -2,7 +2,8 @@ const { paintingModel } = require('../models');
 
 function listPaintings(req, res, next) {
     paintingModel.find()
-        .populate('userId')
+        .populate('author')
+        .populate('buyer')
         .then(paintings => res.json(paintings))
         .catch(next);
 }
@@ -12,6 +13,7 @@ function getPainting(req, res, next) {
 
     paintingModel.findById(id)
         .populate('author')
+        .populate('paymentId')
         .then(painting => {
             console.log(painting);
             res.json(painting)

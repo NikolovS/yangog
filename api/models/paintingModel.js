@@ -25,7 +25,11 @@ const paintingSchema = new mongoose.Schema({
     image: {
         type: String,
         required: true
-    }
+    },
+    buyer: {
+        type: ObjectId,
+        ref: "User"
+    },
 }, { timestamps: { createdAt: 'created_at' } });
 
 module.exports = mongoose.model('Painting', paintingSchema);

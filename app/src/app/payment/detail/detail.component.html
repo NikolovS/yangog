@@ -1,1 +1,27 @@
-<p>detail works!</p>
+<div class="container mt-4">
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Total</th>
+                <th scope="col">Paintings</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>{{payment?.created_at}}</td>
+                <td>{{payment?.status}}</td>
+                <td>{{payment?.total}}</td>
+                <td>{{payment?.paintings}}</td>
+            </tr>
+
+
+        </tbody>
+    </table>
+
+</div>
