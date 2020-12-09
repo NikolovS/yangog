@@ -26,7 +26,7 @@ export class PaymentService {
   getPayment(id: string): Observable<IPayment> {
     return this.http.get<IPayment>(`${apiUrl}/payment/${id}`, { withCredentials: true });
   }
-  createPayment(data: IPayment): Observable<IPayment> {
+  createPayment(data: any): Observable<IPayment> {
     return this.http.post<IPayment>(`${apiUrl}/payment`, data, { withCredentials: true });
   }
   updatePayment(id: string, data: IPayment): Observable<IPayment> {

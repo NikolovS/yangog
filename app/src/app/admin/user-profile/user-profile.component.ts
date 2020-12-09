@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IUser } from 'src/app/shared/interfaces';
 import { UserService } from '../../user/user.service';
 import { environment } from '../../../environments/environment';
@@ -18,7 +18,10 @@ export class UserProfileComponent implements OnInit {
   inEditMode = false;
 
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
     this.id = this.activatedRoute.snapshot.params.id;
     this.user = null;
     this.environment = environment;
@@ -34,17 +37,27 @@ export class UserProfileComponent implements OnInit {
   }
 
 
-  submitHandler(): void {
-    console.log(this);
+  submitHandler(data: any): void {
+    // console.log(this);
 
-    // this.userService.updateProfile(id, data).subscribe({
-    //   next: () => {
-    //     this.inEditMode = false;
-    //   },
-    //   error: (err) => {
-    //     console.error(err);
-    //   }
-    // });
+    this.userService.updateProfile(this.id, data).subscribe({
+      next: () => {
+        this.inEditMode = false;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
+
+  deleteHandler(): void {
+    this.userService.deleteUser(this.id).subscribe(() => {
+      this.router.navigate(['/admin/userlist']);
+      console.log('done');
+    },
+      () => {
+        console.log('err');
+      });
   }
 }
 

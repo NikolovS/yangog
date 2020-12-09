@@ -14,8 +14,15 @@ export class NewComponent implements OnInit {
   ngOnInit(): void {
   }
   submitHandler(data: any): void {
-    console.log('it is working');
+    this.paintingService.createPainting(data)
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/painting/list']);
+        },
+        error: (err) => {
 
+        }
+      });
   }
 
 }

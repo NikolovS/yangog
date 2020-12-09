@@ -1,1 +1,34 @@
-<p>payment-list-item works!</p>
+<div class="container mt-4">
+
+    <h1>Payment #: {{payment?._id}}</h1>
+
+
+    <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
+        <fieldset>
+            <div class="form-group">
+                <label for="status">Total</label>
+                <input #total="ngModel" type="number" id="total" name="total" class="form-control"
+                    [ngModel]="payment?.total">
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select #status="ngModel" id="status" name="status" class="form-control" [ngModel]="payment?.status">
+                    <option>Success</option>
+                    <option>Failed</option>
+                    <option>Pending</option>
+                    <option>Complete</option>
+                    <option>Canceled</option>
+                </select>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button class="btn btn-danger" (click)="deleteHandler()">Delete Payment</button>
+        </fieldset>
+    </form>
+
+
+
+
+
+</div>

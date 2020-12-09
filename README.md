@@ -18,17 +18,21 @@ This is my course work, which includes MongoDB Express.js API as Backend and Ang
   - [X] change password components for user and admin app modules
   - [x] update user data components for user and admin app modules
   - [x] add /api/user/change-password endpoint
+  - [X] app: painting/new component form submit
+  - [X] app: admin/paymentlist add edit
+  - [X] app: admin/paymentlist add delete
+  - [X] app: admin/paintinglist add delete
+  - [X] app: painting/list/:id component form submit
+  - [X] app: admin/userlist delete
+  - [X] app: painting/detail/:id add to cart button
+  - [X] app: cart html
+  - [X] app: cart pay button
+  - [X] app: home
+  - [X] app: cart Service using ngx cookie Service added
 
 # todo
-  - app: painting/new component form submit
-  - app: painting/new component form upload image
-  - app: admin/paymentlist add edit
-  - app: admin/paymentlist add delete
-  - app: admin/paintinglist add delete
-  - app: painting/list/:id component form submit
-  - app: admin/userlist delete
-  - app: painting/detail/:id add to cart button
   - app: painting/list search
-  - app: cart html
-  - app: cart pay button
-  - app: home
+  - /user/profile button's name
+  - /form bootstrap better looking
+  - disable addToCart button when is bought
+  - app: painting/new component form upload image

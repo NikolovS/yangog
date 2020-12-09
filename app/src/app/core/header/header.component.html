@@ -28,7 +28,7 @@
             <li>
                 <a routerLink="/painting">Paintings</a>
             </li>
-            <li *ngIf="isLogged">
+            <li *ngIf="isLogged && !isAdmin">
                 <a routerLink="/payment">Payments</a>
             </li>
 

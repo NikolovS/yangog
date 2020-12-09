@@ -7,6 +7,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { PaymentListItemComponent } from './payment-list-item/payment-list-item.component';
 import { PaymentRouterModule } from './payment-router.module';
 import { PaymentService } from './payment.service';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,8 @@ import { PaymentService } from './payment.service';
   declarations: [DetailComponent, NewComponent, ListComponent, PaymentComponent, PaymentListItemComponent],
   imports: [
     CommonModule,
-    PaymentRouterModule
+    PaymentRouterModule,
+    FormsModule
   ],
   providers: [PaymentService]
 })

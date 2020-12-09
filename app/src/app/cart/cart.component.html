@@ -3,43 +3,44 @@
     <h1 class="text-center">Cart</h1>
     <div class="card-deck d-flex justify-content-center">
 
-        <h3 class="mr-8">Total: 500 лв.</h3>
-        <a routerLink="" class="btn btn-warning ml-4 mb-2 ">Pay</a>
+        <h3 class="mr-8">Total: {{total}} лв.</h3>
+        <a class="btn btn-warning ml-4 mb-2 " (click)="makePayment()">Pay</a>
     </div>
 
 
     <div class="row ">
-        <div class="card-deck d-flex justify-content-center" style="margin: 0">
-            <div class="card mb-4 col-md-2">
-                <img class="card-img-top mt-2" src="../../assets/joda.JPG" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-title">
-                        JODAA
-                    </p>
-                    <p>250 лв.</p>
-                </div>
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+
+                    <th scope="col">Price</th>
+                    <th scope="col"></th>
+
+                </tr>
+            </thead>
+            <tbody *ngFor="let painting of cart">
+                <tr>
+                    <td scope="row">{{painting._id}}</td>
+                    <td>{{painting.name}}</td>
+                    <td><img class="card-img-top" src="{{environment.assetsUrl}}/{{painting.image}}"
+                            alt="Card image cap" style="max-width: 50px;"></td>
+                    <td>{{painting.price}}</td>
+                    <td><a class="btn-sm btn-danger" attr.data-id="{{painting._id}}"
+                            (click)="removeFromCart($event)">Remove
+                            from cart</a>
+                    </td>
+                </tr>
 
 
-                <a routerLink=""><button type="button" class="btn btn-primary mb-2">Remove from
-                        Cart</button></a>
+            </tbody>
+        </table>
 
 
-            </div>
 
-            <div class="card mb-4 col-md-2">
-                <img class="card-img-top" src="../../assets/ironMan.JPG" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-title">
-                        IRONMAN
-                    </p>
-                    <p>250 лв.</p>
-                </div>
-
-                <a routerLink=""><button type="button" class="btn btn-primary mb-2">Remove from
-                        Cart</button></a>
-
-            </div>
-        </div>
 
     </div>
 

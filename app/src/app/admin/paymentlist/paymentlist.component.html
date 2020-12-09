@@ -24,7 +24,8 @@
                 <td>
                     <p *ngFor="let painting of payment.paintings">{{painting.name}},</p>
                 </td>
-                <td><a class="btn-sm btn-success">Edit</a><a class="btn-sm btn-warning">Delete</a></td>
+                <td><a class="btn-sm btn-success" routerLink="/payment/list/{{payment._id}}">Edit</a>
+                </td>
             </tr>
 
 

@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.paintingService.listPaintings().subscribe(paintingList => {
-      console.log(paintingList);
+
 
       this.paintingList = paintingList;
     });

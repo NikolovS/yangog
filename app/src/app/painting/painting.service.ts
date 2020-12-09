@@ -36,7 +36,9 @@ export class PaintingService {
     return this.http.delete<IPainting>(`${apiUrl}/painting/${id}`, { withCredentials: true });
   }
 
-
+  // listTopPaintings(limit?: number): Observable<IPainting[]> {
+  //   return this.http.get<IPainting[]>(`${apiUrl}/painting${limit ? `?limit=${limit}` : ''}`, { withCredentials: true });
+  // }
 
 
 

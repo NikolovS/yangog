@@ -20,7 +20,7 @@
 
 <ng-template #editMode>
 
-    <form #f="ngForm" (ngSubmit)="submitHandler()">
+    <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
         <div class="flex">
             <p>Username: </p>
             <input #username="ngModel" type="text" name="username" id="username" [ngModel]="currentUser?.username"
@@ -55,7 +55,7 @@
         </div>
 
         <button type="button" class="red-button">Cancel</button>
-        <button type="submit" class="green-button">Save</button>
+        <button class="green-button">Save</button>
     </form>
 
 

@@ -12,15 +12,18 @@
         <p>Phone: </p>
         <p>+359 {{user?.phone}}</p>
     </div>
-    <button class="edit-button" (click)="toggleEdintMode()">Edit</button>
-    <a routerLink="/admin/user/change-password/{{user?._id}}">Change Password</a>
+    <button class="btn btn-success" (click)="toggleEdintMode()">Edit</button>
+
+    <button type="button" class="btn btn-primary" routerLink="/admin/user/change-password/{{user?._id}}">Change
+        Password</button>
+    <button type="button" class="btn btn-danger" (click)="deleteHandler()">Delete</button>
 
 </ng-template>
 
 
 <ng-template #editMode>
 
-    <form #f="ngForm" (ngSubmit)="submitHandler()">
+    <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
         <div class="flex">
             <p>Username: </p>
             <input #username="ngModel" type="text" name="username" id="username" [ngModel]="user?.username" required
@@ -54,8 +57,8 @@
             </div>
         </div>
 
-        <button type="button" class="red-button">Cancel</button>
-        <button type="submit" class="green-button">Save</button>
+        <button type="button" class="btn btn-primary">Cancel</button>
+        <button class="btn btn-success" routerLink="/admin/user/profile/{{user?._id}}">Save</button>
     </form>
 
 

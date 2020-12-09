@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logoutHandler(): void {
-    this.userService.logout().subscribe(() => this.router.navigate(['/user/login']));
+    this.userService.logout().subscribe(() => window.open('/user/login', '_self'));
 
   }
 

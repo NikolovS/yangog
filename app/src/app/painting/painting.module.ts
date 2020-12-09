@@ -7,11 +7,12 @@ import { ListComponent } from './list/list.component';
 import { PaintingRouterModule } from './painting-router.module';
 import { FormsModule } from '@angular/forms';
 import { PaintingService } from './painting.service';
+import { PaintingListItemComponent } from './painting-list-item/painting-list-item.component';
 
 
 
 @NgModule({
-  declarations: [PaintingComponent, DetailComponent, NewComponent, ListComponent],
+  declarations: [PaintingComponent, DetailComponent, NewComponent, ListComponent, PaintingListItemComponent],
   imports: [
     CommonModule,
     PaintingRouterModule,

@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   submitFormHandler(formValue: any): void {
     this.userService.register(formValue).subscribe({
       next: () => {
-        this.router.navigate(['/']);
+        window.open('/', '_self');
       },
       error: (err) => {
         console.log(err);

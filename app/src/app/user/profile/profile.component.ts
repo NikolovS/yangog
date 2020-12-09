@@ -37,16 +37,16 @@ export class ProfileComponent implements OnInit {
     this.inEditMode = !this.inEditMode;
   }
 
-  submitHandler(): void {
-    console.log(this);
+  submitHandler(data: any): void {
+    //  console.log(this);
 
-    // this.userService.updateProfile(id, data).subscribe({
-    //   next: () => {
-    //     this.inEditMode = false;
-    //   },
-    //   error: (err) => {
-    //     console.error(err);
-    //   }
-    // });
+    this.userService.updateProfile(this.id, data).subscribe({
+      next: () => {
+        this.inEditMode = false;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
   }
 }
