@@ -1,11 +1,21 @@
 const { paintingModel } = require('../models');
 
 function listPaintings(req, res, next) {
-    paintingModel.find()
-        .populate('author')
-        .populate('buyer')
-        .then(paintings => res.json(paintings))
-        .catch(next);
+    if (req.query.query) {
+        const query = new RegExp(req.query.query, 'i')
+        paintingModel.find({ name: query })
+            .populate('author')
+            .populate('buyer')
+            .then(paintings => res.json(paintings))
+            .catch(next);
+    } else {
+
+        paintingModel.find()
+            .populate('author')
+            .populate('buyer')
+            .then(paintings => res.json(paintings))
+            .catch(next);
+    }
 }
 
 function getPainting(req, res, next) {
@@ -15,17 +25,17 @@ function getPainting(req, res, next) {
         .populate('author')
         .populate('paymentId')
         .then(painting => {
-            console.log(painting);
             res.json(painting)
         })
         .catch(next);
 }
 
 function createPainting(req, res, next) {
-    const { name, description, price, image } = req.body;
+    const { name, description, price } = req.body;
     const { _id: author } = req.user;
-
-    paintingModel.create({ name, description, author, price, image })
+    const { image } = req.files;
+    image.mv('./static/' + image.name);
+    paintingModel.create({ name, description, author, price, image: image.name })
         .then(painting => {
             res.status(200).json(painting)
         })

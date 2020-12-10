@@ -39,13 +39,16 @@ export class PaymentListItemComponent implements OnInit {
   }
 
   deleteHandler(): void {
-    this.paymentService.deletePayment(this.id).subscribe(() => {
-      this.router.navigate(['/admin/paymentlist']);
-      console.log('done');
-    },
-      () => {
-        console.log('err');
-      });
+    if (window.confirm('Are you sure')) {
+      this.paymentService.deletePayment(this.id).subscribe(() => {
+        this.router.navigate(['/admin/paymentlist']);
+        console.log('done');
+      },
+        () => {
+          console.log('err');
+        });
+
+    }
   }
 
 

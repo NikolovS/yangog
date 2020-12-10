@@ -29,10 +29,16 @@ This is my course work, which includes MongoDB Express.js API as Backend and Ang
   - [X] app: cart pay button
   - [X] app: home
   - [X] app: cart Service using ngx cookie Service added
+  - [X] app: painting/list search
+  - [X] /user/profile button's name
+  - [X] disable addToCart button when is bought
+  - [X] app: painting/new component form upload image with express-fileupload
 
 # todo
-  - app: painting/list search
-  - /user/profile button's name
   - /form bootstrap better looking
-  - disable addToCart button when is bought
-  - app: painting/new component form upload image
+  - edit painting image btn
+  - Home better looking 
+  - admin dash board better looking
+  - btn when the painting is sold
+  - formating created at date 
+  - painting description and listing new paintings

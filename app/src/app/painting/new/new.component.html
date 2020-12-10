@@ -1,4 +1,4 @@
-<div class="new-painting-border">
+<!-- <div class="new-painting-border">
     <div class="header-background">
         <span>New Painting</span>
     </div>
@@ -6,7 +6,7 @@
         <div class="new-painting-title">
             <label for="name">Name <span class="red">*</span></label>
             <input #name="ngModel" type="text" name="name" id="name" ngModel required minlength="5">
-            <!-- For Validations -->
+          
             <p class="error" *ngIf="name.touched && name.errors?.required">
                 Painting name is required.
             </p>
@@ -19,7 +19,7 @@
             <textarea #description="ngModel" type="text" name="description" id="description" rows="8" class="height"
                 ngModel required minlength="10"></textarea>
 
-            <!-- For Validations -->
+         
             <p class="error" *ngIf="description.touched && description.errors?.required">
                 The field with your post is required.
             </p>
@@ -30,7 +30,7 @@
             <label for="price">Price <span class="red">*</span></label>
             <input #price="ngModel" type="number" name="price" id="price" ngModel required>
 
-            <!-- For Validations -->
+           
             <p class="error" *ngIf="price.touched && price.errors?.required">
                 The field with your Price is required.
             </p>
@@ -38,7 +38,7 @@
             <label for="image">Image <span class="red">*</span></label>
             <input #image="ngModel" type="text" name="image" id="image" ngModel required>
 
-            <!-- For Validations -->
+           
             <p class="error" *ngIf="image.touched && image.errors?.required">
                 The field with your Price is required.
             </p>
@@ -46,6 +46,66 @@
         </div>
 
         <div class="new-painting-buttons">
+            <button type="button" class="btn btn-danger" routerLink="/">Cancel</button>
+            <button class="btn btn-primary">Create</button>
+        </div>
+
+    </form>
+</div> -->
+
+
+<!-- test -->
+<div class="container mt-4">
+    <div class="header-background">
+        <h2>New Painting</h2>
+    </div>
+    <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
+        <div class="form-group">
+            <label for="name"> <strong class="red">Name:</strong></label>
+            <input #name="ngModel" class="form-control" type="text" name="name" id="name" ngModel required
+                minlength="5">
+            <!-- For Validations -->
+            <p class="error" *ngIf="name.touched && name.errors?.required">
+                Painting name is required.
+            </p>
+            <p class="error" *ngIf="name.touched && name.errors?.minlength">
+                Painting name must be at least 5 characters long.
+            </p>
+        </div>
+        <div class="form-group">
+            <label for="description"> <strong class="red">Description:</strong></label>
+            <textarea #description="ngModel" class="form-control" type="text" name="description" id="description"
+                ngModel required minlength="10"></textarea>
+
+            <!-- For Validations -->
+            <p class="error" *ngIf="description.touched && description.errors?.required">
+                The field with your post is required.
+            </p>
+            <p class="error" *ngIf="description.touched && description.errors?.minlength">
+                Post must be at least 10 characters long.
+            </p>
+            <div class="form-group  ">
+                <label for="price"><strong>Price: </strong></label>
+                <input #price="ngModel" class="form-control" type="number" name="price" id="price" ngModel required>
+
+                <!-- For Validations -->
+                <p class="error" *ngIf="price.touched && price.errors?.required">
+                    The field with your Price is required.
+                </p>
+            </div>
+            <div class="form-group  ">
+                <label for="image"> <strong>Image:</strong></label>
+                <input #image="ngModel" class="form-control" type="file" (change)="upload($event.target)" name="image"
+                    id="image" ngModel required>
+
+                <!-- For Validations -->
+                <p class="error" *ngIf="image.touched && image.errors?.required">
+                    The field with your Image is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
             <button type="button" class="btn btn-danger" routerLink="/">Cancel</button>
             <button class="btn btn-primary">Create</button>
         </div>

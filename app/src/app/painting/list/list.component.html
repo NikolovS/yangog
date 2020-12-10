@@ -5,7 +5,7 @@
 <section class="card-deck d-flex justify-content-center">
     <form class="search float-right" action="/search">
         <label>Search: </label>
-        <input type="text" name="search">
+        <input type="text" name="search" (keyup)="paintingSearch($event)">
         <input type="submit" class="btn btn-primary md-right" value="Search">
     </form>
 </section>

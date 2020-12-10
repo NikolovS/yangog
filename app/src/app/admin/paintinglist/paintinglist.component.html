@@ -6,6 +6,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
+                <th scope="col">Image</th>
                 <th scope="col">Date</th>
                 <th scope="col">Description</th>
                 <th scope="col">Price</th>
@@ -19,6 +20,8 @@
             <tr>
                 <th scope="row">1</th>
                 <td>{{painting.name}}</td>
+                <td><img class="card-img-top" src="{{environment.assetsUrl}}/{{painting.image}}" alt="Card image cap"
+                        style="max-width: 50px;"></td>
                 <td>{{painting.created_at}}</td>
                 <td>{{painting.description}}</td>
 

@@ -10,6 +10,7 @@ export class CartService {
 
   private data: IPainting[] = [];
   private cookieName = 'YangaCart';
+
   constructor(
     private cookieService: CookieService,
     private userService: UserService) {

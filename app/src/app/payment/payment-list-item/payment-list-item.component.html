@@ -22,8 +22,11 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button class="btn btn-danger" (click)="deleteHandler()">Delete Payment</button>
+            <button type="button" class="btn btn-warning mr-2" routerLink='/admin/paymentlist'>Cancel</button>
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <button class="btn btn-danger " (click)="deleteHandler()">Delete Payment</button>
+
+
         </fieldset>
     </form>
 

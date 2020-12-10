@@ -4,7 +4,7 @@
     <div class="card-deck d-flex justify-content-center">
 
         <h3 class="mr-8">Total: {{total}} лв.</h3>
-        <a class="btn btn-warning ml-4 mb-2 " (click)="makePayment()">Pay</a>
+        <a class="btn btn-warning ml-4 mb-2 " [class.disabled]="cart.length===0" (click)="makePayment()">Pay</a>
     </div>
 
 

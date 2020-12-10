@@ -39,13 +39,15 @@ export class PaintingListItemComponent implements OnInit {
   }
 
   deleteHandler(): void {
-    this.paintingService.deletePainting(this.id).subscribe(() => {
-      this.router.navigate(['/admin/paintinglist']);
-      console.log('done');
-    },
-      () => {
-        console.log('err');
-      });
+    if (window.confirm('Are you sure?')) {
+      this.paintingService.deletePainting(this.id).subscribe(() => {
+        this.router.navigate(['/admin/paintinglist']);
+        console.log('done');
+      },
+        () => {
+          console.log('err');
+        });
+    }
   }
 
 

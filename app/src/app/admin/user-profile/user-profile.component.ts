@@ -42,7 +42,7 @@ export class UserProfileComponent implements OnInit {
 
     this.userService.updateProfile(this.id, data).subscribe({
       next: () => {
-        this.inEditMode = false;
+        window.location.reload();
       },
       error: (err) => {
         console.error(err);
@@ -51,13 +51,15 @@ export class UserProfileComponent implements OnInit {
   }
 
   deleteHandler(): void {
-    this.userService.deleteUser(this.id).subscribe(() => {
-      this.router.navigate(['/admin/userlist']);
-      console.log('done');
-    },
-      () => {
-        console.log('err');
-      });
+    if (window.confirm('Are you sure ?')) {
+      this.userService.deleteUser(this.id).subscribe(() => {
+        this.router.navigate(['/admin/userlist']);
+        console.log('done');
+      },
+        () => {
+          console.log('err');
+        });
+    }
   }
 }
 

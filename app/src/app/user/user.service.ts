@@ -52,7 +52,11 @@ export class UserService {
 
   updateProfile(id: string, data: any): Observable<IUser> {
     return this.http.put<IUser>(`${apiUrl}/user/${id}`, data, { withCredentials: true }).pipe(
-      tap((user: IUser) => this.currentUser = user)
+      tap((user: IUser) => {
+        if (user._id === this.currentUser?._id) {
+          this.currentUser = user;
+        }
+      })
     );
   }
   listUsers(): Observable<IUser[]> {

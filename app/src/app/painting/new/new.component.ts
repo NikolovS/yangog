@@ -9,12 +9,19 @@ import { PaintingService } from '../painting.service';
 })
 export class NewComponent implements OnInit {
 
+  private formData: any;
   constructor(private paintingService: PaintingService, private router: Router) { }
 
   ngOnInit(): void {
+    this.formData = new FormData();
   }
   submitHandler(data: any): void {
-    this.paintingService.createPainting(data)
+    for (const key in data) {
+      if (data[key] && key !== 'image') {
+        this.formData.set(key, data[key]);
+      }
+    }
+    this.paintingService.createPainting(this.formData)
       .subscribe({
         next: () => {
           this.router.navigate(['/painting/list']);
@@ -25,4 +32,9 @@ export class NewComponent implements OnInit {
       });
   }
 
+  upload(target: HTMLInputElement): void {
+    if (target.files) {
+      this.formData.set('image', target.files[0]);
+    }
+  }
 }

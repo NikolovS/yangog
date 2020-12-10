@@ -25,16 +25,15 @@ function listPayments(req, res, next) {
     }
 }
 
-function createPayment(req, res, next) {
+async function createPayment(req, res, next) {
     const { paintings, total } = req.body;
     const { _id: userId } = req.user;
-
-    paymentModel.create({ userId, paintings, total })
-        .then(record => {
-            paintingModel.updateMany({ _id: { $in: paintings } }, { isSold: true })
-            res.status(200).json(record)
-        })
-        .catch(next);
+    const record = await paymentModel.create({ userId, paintings, total })
+    const update = await paintingModel.updateMany({ _id: { $in: paintings } }, { $set: { isSold: true } })
+    if (record) {
+        return res.status(200).json(record)
+    }
+    next();
 }
 
 async function updatePayment(req, res, next) {

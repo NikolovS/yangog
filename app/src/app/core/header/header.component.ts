@@ -10,13 +10,16 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  user: IUser | null | undefined;
+  public user: IUser | null | undefined;
 
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
   get isAdmin(): boolean {
     return this.userService.isAdmin;
+  }
+  getUsername(): any {
+    return this.userService.currentUser?.username;
   }
 
   constructor(private userService: UserService, private router: Router) {

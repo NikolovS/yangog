@@ -1,5 +1,6 @@
 global.__basedir = __dirname;
 require('dotenv').config()
+const fileUpload = require('express-fileupload');
 const dbConnector = require('./config/db');
 // const mongoose = require('mongoose');
 const apiRouter = require('./router');
@@ -14,6 +15,7 @@ dbConnector()
     const app = require('express')();
     require('./config/express')(app);
 
+    app.use(fileUpload({ createParentPath: true }))
     app.use(cors({
       origin: config.origin,
       credentials: true
