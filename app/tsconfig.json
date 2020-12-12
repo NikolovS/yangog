@@ -19,7 +19,8 @@
     "lib": [
       "es2018",
       "ES2020",
-      "dom"
+      "dom",
+      "esnext.intl"
     ]
   },
   "angularCompilerOptions": {

@@ -8,10 +8,10 @@
             <img class="img-fluid" src="{{environment.assetsUrl}}/{{painting?.image}}" alt="Card painting" />
         </div>
 
-        <div class="col-md-7 text-center">
-            <h4 class="my-3">Description</h4>
-            <p>{{painting?.description}}</p>
-            <h3 class="my-3">Price:</h3>
+        <div class="col-md-5 text-center" style="font-size:xx-large">
+            <h4 class="my-5">Description</h4>
+            <p style="font-size:x-large">{{painting?.description}}</p>
+            <h3 class="my-5">Price:</h3>
             <p>{{painting?.price}}лв.</p>
 
             <a [class.disabled]=inCart class="btn btn-primary" [attr.disabled]="inCart ? 'disabled' : '' "

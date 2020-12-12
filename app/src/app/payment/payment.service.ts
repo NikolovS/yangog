@@ -14,12 +14,7 @@ export class PaymentService {
 
   constructor(private http: HttpClient) {
   }
-  //  api/payment
-  //   router.get('/', paymentController.listPayments);
-  // router.get('/:id', paymentController.getPayment);
-  // router.post('/', auth(), paymentController.createPayment);
-  // router.put('/:id', auth(), paymentController.updatePayment);
-  // router.delete('/:id', auth(), paymentController.deletePayment);
+
   listPayments(): Observable<IPayment[]> {
     return this.http.get<IPayment[]>(`${apiUrl}/payment`, { withCredentials: true });
   }

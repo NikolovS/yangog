@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DetailComponent } from './detail/detail.component';
 
 import { ListComponent } from './list/list.component';
-import { PaymentComponent } from './payment/payment.component';
+
 import { PaymentListItemComponent } from './payment-list-item/payment-list-item.component';
 import { PaymentRouterModule } from './payment-router.module';
 import { PaymentService } from './payment.service';
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [DetailComponent, ListComponent, PaymentComponent, PaymentListItemComponent],
+  declarations: [DetailComponent, ListComponent, PaymentListItemComponent],
   imports: [
     CommonModule,
     PaymentRouterModule,

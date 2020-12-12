@@ -7,7 +7,8 @@
 </div>
 
 <div>
-    <h1 class="text-center">New Paintings</h1>
+    <h1 class="text-center"> <a routerLink="/painting/list">Paintings</a></h1>
+
     <div class="container mt-3">
         <div class="row">
 
@@ -17,7 +18,7 @@
                         width="400">
                     <div class="card-body">
                         <h4 class="card-title">{{painting.name}}</h4>
-                        <small class="float-right">{{painting.created_at | timeDiff}}</small>
+                        <h5 class="float-right">{{painting.created_at | timeDiff}}</h5>
                     </div>
                 </div>
             </div>
@@ -26,7 +27,7 @@
         </div>
 
     </div>
-
+    <h4 class="text-center"> <a href="https://www.instagram.com/yani_dimitrov/"> Follow me on instagram</a></h4>
 
 </div>
 

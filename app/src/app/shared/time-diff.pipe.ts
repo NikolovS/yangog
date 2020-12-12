@@ -5,36 +5,39 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TimeDiffPipe implements PipeTransform {
 
-  transform(value: string): string {
-    const locale = 'en';
-    const msPerMinute = 60 * 1000;
-    const msPerHour = msPerMinute * 60;
-    const msPerDay = msPerHour * 24;
-    const msPerMonth = msPerDay * 30;
-    const msPerYear = msPerMonth * 12;
+  transform(value: any, args?: any): any {
+    if (value) {
+      const seconds = Math.floor((+new Date() - +new Date(value)) / 1000);
+      if (seconds < 29) {
+        // less than 30 seconds ago will show as 'Just now'
+        return 'Just now';
+      }
+      const intervals: any = {
+        year: 31536000,
+        month: 2592000,
+        week: 604800,
+        day: 86400,
+        hour: 3600,
+        minute: 60,
+        second: 1
+      };
+      let counter;
+      for (const i in intervals) {
+        if (intervals[i]) {
 
-    const valueDate = new Date(value);
-    const current = new Date();
-    const elapsed = +current - +valueDate;
-    // релатив тайм формат
-    const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
-    if (elapsed < msPerMinute) {
-      return rtf.format(-Math.floor(elapsed / 1000), 'seconds');
-    }
-    if (elapsed < msPerHour) {
-      return rtf.format(-Math.floor(elapsed / msPerMinute), 'minutes');
-    }
-    if (elapsed < msPerDay) {
-      return rtf.format(-Math.floor(elapsed / msPerHour), 'hours');
-    }
-    if (elapsed < msPerMonth) {
-      return rtf.format(-Math.floor(elapsed / msPerDay), 'days');
-    }
-    if (elapsed < msPerYear) {
-      return rtf.format(-Math.floor(elapsed / msPerMonth), 'months');
-    }
+          counter = Math.floor(seconds / intervals[i]);
+          if (counter > 0) {
+            if (counter === 1) {
+              return counter + ' ' + i + ' ago'; // singular (1 day ago)
+            } else {
+              return counter + ' ' + i + 's ago'; // plural (2 days ago)
+            }
 
-    return rtf.format(-Math.floor(elapsed / msPerYear), 'years');
+          }
+        }
+      }
+    }
+    return value;
   }
 
 }

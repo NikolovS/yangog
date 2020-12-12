@@ -28,8 +28,8 @@ function createUser(req, res, next) {
 
 async function updateUser(req, res, next) {
     const { id } = req.params;
-    const { username, email, password, phone } = req.body;
-    await userModel.updateOne({ _id: id }, { username, email, password, phone })
+    const { username, email, phone } = req.body;
+    await userModel.updateOne({ _id: id }, { username, email, phone })
     const updatedUser = await userModel.findOne({ _id: id })
     res.status(200).json(updatedUser)
 

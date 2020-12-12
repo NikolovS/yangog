@@ -41,18 +41,19 @@ async function updatePayment(req, res, next) {
     const { status, total } = req.body;
     const { _id: userId } = req.user;
 
-    await paymentModel.findByIdAndUpdate({ _id: id }, { userId, status, total })
+    await paymentModel.findByIdAndUpdate({ _id: id }, { status, total })
     const updatedPayment = await paymentModel.findOne({ _id: id })
     res.status(200).json(updatedPayment)
 }
 
-function deletePayment(req, res, next) {
+async function deletePayment(req, res, next) {
     const { id } = req.params;
-    paymentModel.findByIdAndDelete({ _id: id })
-        .then(deletedPayment => {
-            res.status(200).json(deletedPayment)
-        })
-        .catch(next);
+    const { paintings } = req.body;
+    const payment = await paymentModel.findById(id)
+    await paymentModel.findByIdAndDelete(id)
+    const update = await paintingModel.updateMany({ _id: { $in: payment.paintings } }, { $set: { isSold: false, buyer: null } })
+    res.status(200).json(deletedPayment)
+
 }
 
 module.exports = {
