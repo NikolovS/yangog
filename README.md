@@ -1,5 +1,6 @@
 # yangog
 This is my course work, which includes MongoDB, Express.js API as Backend and Angular as frontEnd framework.
+This is a gallery website.Where everyone can see and paintings and add them to the cart. Only authenticated users can buy painting,edit their profile,preview their payments.Admin users can create,update and delete paintings,payments and users.
 
 
 # progress
