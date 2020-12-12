@@ -15,15 +15,21 @@ export class ChangePasswordComponent implements OnInit {
   ngOnInit(): void {
   }
   changePassword(data: any): void {
-    this.userService.changePassword(this.id, data.password).subscribe(
-      () => {
-        this.router.navigate(['/admin/userlist']);
-        console.log('done');
-      },
-      () => {
-        console.log('err');
-      }
-    );
+    if (data.password.length && (data.password === data.confirm_password)) {
+      this.userService.changePassword(this.id, data.password).subscribe(
+        () => {
+          this.router.navigate(['/admin/userlist']);
+          console.log('done');
+        },
+        () => {
+          console.log('err');
+
+
+        }
+      );
+
+
+    }
   }
 
 }

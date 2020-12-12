@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./paintinglist.component.css']
 })
 export class PaintinglistComponent implements OnInit {
-  private environment = environment;
+  public environment = environment;
   paintingList: IPainting[] = [];
   constructor(private paintingService: PaintingService) { }
 

@@ -32,8 +32,8 @@ export class NewComponent implements OnInit {
       });
   }
 
-  upload(target: HTMLInputElement): void {
-    if (target.files) {
+  upload(target: any): void {
+    if (target?.files) {
       this.formData.set('image', target.files[0]);
     }
   }

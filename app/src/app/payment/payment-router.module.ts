@@ -2,7 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { DetailComponent } from './detail/detail.component';
 import { ListComponent } from './list/list.component';
-import { NewComponent } from './new/new.component';
+
 
 import { PaymentListItemComponent } from './payment-list-item/payment-list-item.component';
 
@@ -29,14 +29,7 @@ const routes: Routes = [
                     title: 'PAYMENT DETAIL'
                 }
             },
-            {
-                path: 'new',
-                component: NewComponent,
-                data: {
-                    isLogged: true,
-                    title: 'NEW PAYMENT'
-                }
-            },
+
             {
                 path: 'list',
                 component: ListComponent,

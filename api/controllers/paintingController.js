@@ -44,10 +44,16 @@ function createPainting(req, res, next) {
 
 async function updatePainting(req, res, next) {
     const { id } = req.params;
-    const { name, description, price, image } = req.body;
+    const { name, description, price } = req.body;
     const { _id: userId } = req.user;
+    let data = { userId, name, description, price };
+    if (req.files && req.files.image) {
+        const { image } = req.files;
+        image.mv('./static/' + image.name);
+        data.image = image.name;
+    }
 
-    await paintingModel.findByIdAndUpdate({ _id: id }, { userId, name, description, price, image })
+    await paintingModel.findByIdAndUpdate({ _id: id }, { $set: data })
     const updatedPainting = await paintingModel.findOne({ _id: id })
     res.status(200).json(updatedPainting)
 }

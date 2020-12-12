@@ -35,12 +35,11 @@
             </p>
 
             <label for="image">Image <span class="red">*</span></label>
-            <input #image="ngModel" type="text" name="image" id="image" [ngModel]="painting?.image" required>
-
-            <!-- For Validations -->
-            <p class="error" *ngIf="image.touched && image.errors?.required">
-                Image is required.
-            </p>
+            <!-- <div class="col-md-12"> -->
+            <img class="card-img-top" src="{{environment.assetsUrl}}/{{painting?.image}}" alt="Card image cap"
+                style="max-width: 100px;">
+            <!-- </div> -->
+            <input type="file" (change)="upload($event.target)" name="image" id="image" required>
 
         </div>
 

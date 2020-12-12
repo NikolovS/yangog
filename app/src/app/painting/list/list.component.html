@@ -3,10 +3,10 @@
 
 
 <section class="card-deck d-flex justify-content-center">
-    <form class="search float-right" action="/search">
-        <label>Search: </label>
+    <form class="search float-right mr-4" action="/search">
+        <label class="mr-4">Search: </label>
         <input type="text" name="search" (keyup)="paintingSearch($event)">
-        <input type="submit" class="btn btn-primary md-right" value="Search">
+
     </form>
 </section>
 <div class="container mt-3">
@@ -22,8 +22,8 @@
                     </h4>
                 </div>
                 <div class="card-footer">
-                    <a routerLink="/painting/detail/{{painting._id}}"><button type="button"
-                            class="btn btn-primary">Details</button></a>
+                    <a routerLink="/painting/detail/{{painting._id}}" class="btn btn-primary">Details</a>
+                    <button *ngIf="painting.isSold" class="btn btn-danger disabled">SOLD</button>
                     <small class="float-right"> {{painting.created_at}}</small>
                 </div>
             </div>

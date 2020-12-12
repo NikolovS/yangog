@@ -1,6 +1,8 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1> Check out our latest paintings</h1>
+        <h1 class="text-center"> Welcome to My Gallery !
+            Here you’ll find a detailed presentation of my paintings.
+            And the chance of buying them.</h1>
     </div>
 </div>
 
@@ -15,7 +17,7 @@
                         width="400">
                     <div class="card-body">
                         <h4 class="card-title">{{painting.name}}</h4>
-                        <small class="float-right">{{painting.created_at}}</small>
+                        <small class="float-right">{{painting.created_at | timeDiff}}</small>
                     </div>
                 </div>
             </div>

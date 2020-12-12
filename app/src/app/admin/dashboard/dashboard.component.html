@@ -1,18 +1,27 @@
 <div class="container">
-    <div class="row mb-2">
-        <button type="button" class="btn btn-success" routerLink="/admin/userlist">Users</button>
-    </div>
-    <div class="row mb-2">
-        <button type="button" class="btn btn-success" routerLink="/admin/paintinglist">Paintings</button>
+    <table class="table mt-2">
+        <thead>
+            <tr>
 
-    </div>
-    <div class="row mb-2">
-        <button type="button" class="btn btn-success" routerLink="/admin/paymentlist">Payments</button>
+                <th scope="col">Users</th>
+                <th scope="col">Paintings</th>
+                <th scope="col">Payments</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> <button type="button" class="btn btn-success" routerLink="/admin/userlist">Users</button></td>
+                <td><button type="button" class="btn btn-success" routerLink="/admin/paintinglist">Paintings</button>
+                </td>
+                <td><button type="button" class="btn btn-success" routerLink="/admin/paymentlist">Payments</button></td>
+                <td> <button type="button" class="btn btn-primary" routerLink="/painting/new"
+                        class="btn btn-warning ">Create
+                        Painting</button></td>
+            </tr>
 
-    </div>
-    <div class="row mb-2">
-        <button type="button" class="btn btn-primary" routerLink="/painting/new" class="btn btn-warning ">Create
-            Painting</button>
 
-    </div>
+        </tbody>
+    </table>
+
 </div>

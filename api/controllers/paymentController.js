@@ -29,7 +29,7 @@ async function createPayment(req, res, next) {
     const { paintings, total } = req.body;
     const { _id: userId } = req.user;
     const record = await paymentModel.create({ userId, paintings, total })
-    const update = await paintingModel.updateMany({ _id: { $in: paintings } }, { $set: { isSold: true } })
+    const update = await paintingModel.updateMany({ _id: { $in: paintings } }, { $set: { isSold: true, buyer: userId } })
     if (record) {
         return res.status(200).json(record)
     }

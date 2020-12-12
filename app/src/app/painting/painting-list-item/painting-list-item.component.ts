@@ -14,6 +14,7 @@ export class PaintingListItemComponent implements OnInit {
   private id: string;
   @Input() painting: IPainting | undefined;
   public environment: any;
+  private formData: any;
   constructor(
     private paintingService: PaintingService,
     private activatedRoute: ActivatedRoute,
@@ -25,10 +26,16 @@ export class PaintingListItemComponent implements OnInit {
   ngOnInit(): void {
     this.paintingService.getPainting(this.id).subscribe((painting: IPainting) => {
       this.painting = painting;
+      this.formData = new FormData();
     });
   }
-  submitHandler(data: IPainting): void {
-    this.paintingService.updatePainting(this.id, data).subscribe({
+  submitHandler(data: any): void {
+    for (const key in data) {
+      if (data[key] && key !== 'image') {
+        this.formData.set(key, data[key]);
+      }
+    }
+    this.paintingService.updatePainting(this.id, this.formData).subscribe({
       next: () => {
         this.router.navigate(['/admin/paintinglist']);
       },
@@ -47,6 +54,11 @@ export class PaintingListItemComponent implements OnInit {
         () => {
           console.log('err');
         });
+    }
+  }
+  upload(target: any): void {
+    if (target?.files) {
+      this.formData.set('image', target.files[0]);
     }
   }
 

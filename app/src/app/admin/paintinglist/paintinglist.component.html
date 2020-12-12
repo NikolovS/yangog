@@ -16,9 +16,9 @@
 
             </tr>
         </thead>
-        <tbody *ngFor="let painting of paintingList">
+        <tbody *ngFor="let painting of paintingList; let indexOfEl=index">
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{indexOfEl+1}} </th>
                 <td>{{painting.name}}</td>
                 <td><img class="card-img-top" src="{{environment.assetsUrl}}/{{painting.image}}" alt="Card image cap"
                         style="max-width: 50px;"></td>

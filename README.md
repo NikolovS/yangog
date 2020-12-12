@@ -42,3 +42,4 @@ This is my course work, which includes MongoDB Express.js API as Backend and Ang
   - btn when the painting is sold
   - formating created at date 
   - painting description and listing new paintings
+  - add counter in adminPanel-userlist,paintinglist,paymentlist
